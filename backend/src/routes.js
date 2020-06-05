@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const Academic = require('./models/Academic');
 const Incident = require('./models/Incidents');
+const AcademicController = require('./controllers/AcademicController');
 
 const routes = Router();
 
@@ -9,20 +10,7 @@ routes.post('/login', (request, response) => {
     return response.json({ message: "Rota de Login" });
 });
 
-routes.post('/register', async (request, response) => {
-    console.log(request.body);
-
-    const { nome, login, senha, perfil } = request.body;
-
-    const academic = await Academic.create({
-        nome,
-        login,
-        senha,
-        perfil,
-    });
-
-    return response.json(academic);
-});
+routes.post('/register', AcademicController.register);
 
 routes.post('/incident', async (request, response) => {
     console.log(request.body);
