@@ -7,6 +7,8 @@ const IncidentSchema = new mongoose.Schema({
     pontuacao: Number,
     upvotes: [String],
     downvotes: [String],
+    estado: String,
+    criador: String,
 });
 
 module.exports = mongoose.model('Incident', IncidentSchema);
