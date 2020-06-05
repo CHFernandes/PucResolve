@@ -6,10 +6,7 @@ const IncidentsController = require('./controllers/IncidentsController');
 
 const routes = Router();
 
-routes.post('/login', (request, response) => {
-    console.log(request.body);
-    return response.json({ message: "Rota de Login" });
-});
+routes.post('/login', AcademicController.login);
 
 routes.post('/register', AcademicController.register);
 

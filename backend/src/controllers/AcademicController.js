@@ -15,5 +15,28 @@ module.exports = {
             });
         }
         return response.json(academic);
+    },
+
+    async login(request, response){
+        const { login, senha } = request.body;
+
+        let user = await Academico.findOne({ login });
+
+        if(!user){
+            return response.json("Usuário não encontrado");
+        }
+
+        if(user.login == login && user.senha == senha){
+            let permitido = {
+                nome: user.nome,
+                perfil: user.perfil
+            };
+
+            return response.json(permitido);
+        }else{
+            return response.json("Senha incorreta");
+        }
+
+        
     }
 }
