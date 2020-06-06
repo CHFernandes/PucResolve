@@ -12,10 +12,7 @@ routes.post('/register', AcademicController.register);
 
 routes.post('/incident', IncidentsController.register);
 
-routes.get('/getIncidents', (request, response) => {
-    console.log(request.body);
-    return response.json({ message: "Rota de ocorrências abertas" });
-});
+routes.get('/getIncidents', IncidentsController.index);
 
 routes.put('/updateIncident', (request, response) => {
     console.log(request.body);
