@@ -1,18 +1,6 @@
-const mongoose = require('mongoose');
-const Incidents = mongoose.model('Incidents');
+const Incidents = require('../models/Incidents');
 
 module.exports = {
-    async index(request, response){
-        const {page = 1} = request.query;
-        const incidents = await Incidents.paginate({}, {page, limit: 10});
-        return response.json(incidents);
-    },
-
-    async show(request, response){
-        const incidents = await Incidents.findById(request.params.id);
-        return response.json(incidents);
-    },
-
     async register(request, response) {
         console.log(request.body);
 
@@ -48,6 +36,5 @@ module.exports = {
         });
 
         return response.json(incident);
-    },
-    
+    }
 }
