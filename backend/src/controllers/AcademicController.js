@@ -23,18 +23,19 @@ module.exports = {
         let user = await Academico.findOne({ login });
 
         if(!user){
-            return response.json("Usuário não encontrado");
+            return response.status(400).json({ erro: "Usuário não encontrado"});
         }
 
         if(user.login == login && user.senha == senha){
             let permitido = {
                 nome: user.nome,
-                perfil: user.perfil
+                perfil: user.perfil,
+                id: user._id
             };
 
             return response.json(permitido);
         }else{
-            return response.json("Senha incorreta");
+            return response.status(400).json({erro: "Senha incorreta"});
         }
 
         
