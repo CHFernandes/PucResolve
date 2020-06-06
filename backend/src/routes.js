@@ -22,9 +22,6 @@ routes.put('/updateIncident', (request, response) => {
     return response.json({ message: "Rota de atualização de ocorrências" });
 });
 
-routes.get('/showAll', (request, response) => {
-    console.log(request.body);
-    return response.json({ message: "Rota de exibir todas as ocorrências cadastradas" });
-});
+routes.get('/showAll', IncidentsController.index);
 
 module.exports = routes;
