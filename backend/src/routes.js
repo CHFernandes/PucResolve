@@ -12,17 +12,14 @@ routes.post('/register', AcademicController.register);
 
 routes.post('/incident', IncidentsController.register);
 
-routes.get('/getIncidents', (request, response) => {
-    console.log(request.body);
-    return response.json({ message: "Rota de ocorrências abertas" });
-});
+routes.get('/showAll', IncidentsController.index);
 
 routes.put('/updateIncident', (request, response) => {
     console.log(request.body);
     return response.json({ message: "Rota de atualização de ocorrências" });
 });
 
-routes.get('/showAll', (request, response) => {
+routes.get('/getIncidents', (request, response) => {
     console.log(request.body);
     return response.json({ message: "Rota de exibir todas as ocorrências cadastradas" });
 });
