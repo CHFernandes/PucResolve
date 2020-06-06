@@ -9,6 +9,8 @@ const IncidentSchema = new mongoose.Schema({
     pontuacao: Number,
     upvotes: [String],
     downvotes: [String],
+    estado: String,
+    criador: String,
 });
 
 IncidentSchema.plugin(mongoosePaginate);
