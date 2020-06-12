@@ -36,8 +36,6 @@ module.exports = {
             return response.json(permitido);
         }else{
             return response.status(400).json({erro: "Senha incorreta"});
-        }
-
-        
+        }      
     }
 }
