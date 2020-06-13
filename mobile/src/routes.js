@@ -5,6 +5,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Login from './pages/Login';
 import Feed from './pages/Feed';
 
+const AppStack = createStackNavigator();
+
 export default function Routes(){
     return(
         <NavigationContainer>
