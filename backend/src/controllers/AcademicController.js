@@ -17,6 +17,14 @@ module.exports = {
         return response.json(academic);
     },
 
+    async getUser(request, response){
+        const _id = request.params.id;
+
+        let user = await Academico.findOne({ _id });
+
+        return response.json(user.nome);
+    },
+
     async login(request, response){
         const { login, senha } = request.body;
 

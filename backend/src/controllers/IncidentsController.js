@@ -14,7 +14,6 @@ module.exports = {
     },
 
     async register(request, response) {
-        console.log(request.body);
 
         const { descricao, localizacao } = request.body;
 
@@ -45,6 +44,8 @@ module.exports = {
             pontuacao: 0,
             upvotes: [],
             downvotes: [],
+            estado: 0,
+            criador: request.headers.authorization,
         });
 
         return response.json(incident);

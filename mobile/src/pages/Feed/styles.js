@@ -70,7 +70,7 @@ export default StyleSheet.create({
         flexDirection:'row',
     },
     incidentDesc:{
-        flexBasis:250,
+        flexBasis:240,
     },
     upvote:{
         backgroundColor:'#00AA00',

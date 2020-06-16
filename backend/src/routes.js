@@ -12,6 +12,8 @@ routes.post('/register', AcademicController.register);
 
 routes.post('/incident', IncidentsController.register);
 
+routes.post('/getUser/:id', AcademicController.getUser);
+
 routes.get('/getIncidents', (request, response) => {
     console.log(request.body);
     return response.json({ message: "Rota de ocorrências abertas" });
