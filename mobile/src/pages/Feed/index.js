@@ -14,6 +14,7 @@ export default function Feed(){
 
     const [incidents, setIncidents] = useState([]);
     const [user, setUser] = useState("usuário");
+    const [update, setUpdate] = useState([]);
 
     async function upvote(incident){
         const id = incident._id;
@@ -29,6 +30,7 @@ export default function Feed(){
             });
             const updateUrl = `/votes/${id}`
             const updatedVotes = await api.post(`${updateUrl}`);
+            setUpdate(updatedVotes);
             return updatedVotes.data;
         }
     }
@@ -47,6 +49,7 @@ export default function Feed(){
             });
             const updateUrl = `/votes/${id}`
             const updatedVotes = await api.post(`${updateUrl}`);
+            setUpdate(updatedVotes);
             return updatedVotes.data;
         }
     }
@@ -75,6 +78,10 @@ export default function Feed(){
     useEffect(() => {
         loadIncidents();
     }, []);
+
+    useEffect(() => {
+        loadIncidents();
+    }, [update]);
 
     return(
         <View style={styles.container}>
