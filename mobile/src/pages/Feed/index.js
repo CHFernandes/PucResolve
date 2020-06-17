@@ -15,16 +15,40 @@ export default function Feed(){
     const [incidents, setIncidents] = useState([]);
     const [user, setUser] = useState("usuário");
 
-    function upvote(){
+    async function upvote(incident){
+        const id = incident._id;
 
+        if(!header){
+            logout();
+        }else{
+            const url = `/upvote/${id}`;
+            await api.post(`${url}`,{},{
+                headers:{
+                    'authorization':header,
+                }
+            });
+            const updateUrl = `/votes/${id}`
+            const updatedVotes = await api.post(`${updateUrl}`);
+            return updatedVotes.data;
+        }
     }
 
-    function downvote(){
+    async function downvote(incident){
+        const id = incident._id;
 
-    }
-
-    function countVotes(){
-
+        if(!header){
+            logout();
+        }else{
+            const url = `/downvote/${id}`;
+            await api.post(`${url}`,{},{
+                headers:{
+                    'authorization':header,
+                }
+            });
+            const updateUrl = `/votes/${id}`
+            const updatedVotes = await api.post(`${updateUrl}`);
+            return updatedVotes.data;
+        }
     }
 
     function logout(){
@@ -92,11 +116,11 @@ export default function Feed(){
                                 </View>
                             </View>
                             <View style={styles.incidentRight}>
-                                <TouchableOpacity style={styles.upvote} onPress={upvote}>
+                                <TouchableOpacity style={styles.upvote} onPress={() => upvote(incident)}>
                                     <Feather name='arrow-up' size={40} color='#fff'/>
                                 </TouchableOpacity>
-                                <Text style={styles.votesCounter}>0</Text>
-                                <TouchableOpacity style={styles.downvote} onPress={downvote}>
+                                    <Text style={styles.votesCounter}>{incident.pontuacao}</Text>
+                                <TouchableOpacity style={styles.downvote} onPress={() => downvote(incident)}>
                                     <Feather name='arrow-down' size={40} color='#fff'/>
                                 </TouchableOpacity>
                             </View>

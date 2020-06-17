@@ -26,6 +26,8 @@ routes.put('/updateIncident', (request, response) => {
 
 routes.get('/showAll', IncidentsController.index);
 
+routes.post('/votes/:id', IncidentsController.updateVotes);
+
 routes.post('/upvote/:id', IncidentsController.upvote);
 
 routes.post('/downvote/:id', IncidentsController.downvote);

@@ -55,15 +55,25 @@ module.exports = {
         return response.json(incident);
     },
 
+    async updateVotes(request, response){
+        const id = request.params.id;
+        const incident = await Incidents.findById(id);
+        const upvotes = incident.upvotes.length;
+        const downvotes = incident.downvotes.length;
+        const totalVotes = upvotes - downvotes;
+        const updatedIncident = await Incidents.findByIdAndUpdate(id, {pontuacao: totalVotes}, {new: false});
+        return response.json(updatedIncident);
+    },
+
     async upvote(request, response) {
-        var incidents = await Incidents.findByIdAndUpdate(request.params.id, {$pull: {upvotes: request.headers.authorization}}, {new: true})
+        let incidents = await Incidents.findByIdAndUpdate(request.params.id, {$pull: {upvotes: request.headers.authorization}}, {new: true})
         incidents = await Incidents.findByIdAndUpdate(request.params.id, {$pull: {downvotes: request.headers.authorization}}, {new: true})
         incidents = await Incidents.findByIdAndUpdate(request.params.id, {$push: {upvotes: request.headers.authorization}}, {new: true})
         return response.json(incidents);
     },
 
     async downvote(request, response) {
-        var incidents = await Incidents.findByIdAndUpdate(request.params.id, {$pull: {upvotes: request.headers.authorization}}, {new: true})
+        let incidents = await Incidents.findByIdAndUpdate(request.params.id, {$pull: {upvotes: request.headers.authorization}}, {new: true})
         incidents = await Incidents.findByIdAndUpdate(request.params.id, {$pull: {downvotes: request.headers.authorization}}, {new: true})
         incidents = await Incidents.findByIdAndUpdate(request.params.id, {$push: {downvotes: request.headers.authorization}}, {new: true})
         return response.json(incidents);
