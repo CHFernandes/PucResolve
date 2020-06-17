@@ -35,6 +35,12 @@ export default function Feed(){
         }
     }
 
+    function dataFormat(data){
+        const dataArray = data.split('-');
+        const formatedData = (dataArray[2] + '/' + dataArray[1] + '/' + dataArray[0]);
+        return String(formatedData);
+    }
+
     async function downvote(incident){
         const id = incident._id;
 
@@ -112,7 +118,7 @@ export default function Feed(){
                             <View style={styles.incidentLeft}>
                                 <View style={styles.incidentHeader}>
                                     <Text style={styles.incidentDesc}>{incident.descricao}</Text>
-                                    <Text style={styles.incidentDate}>{incident.data}</Text>
+                                    <Text style={styles.incidentDate}>{dataFormat(incident.data)}</Text>
                                 </View>
                                 <View style={styles.incidentFooter}>
                                     <Text style={styles.incidentLoc}>{incident.localizacao}</Text>
