@@ -36,6 +36,10 @@ module.exports = {
         currentSecs = ("0" + currentSecs).slice(-2);
         var hora = currentHours + ':' + currentMins + ':' + currentSecs;
 
+        const _id = request.headers.authorization;
+        let user = await Academico.findOne({ _id });
+        const criador = user.nome;
+
         const incident = await Incidents.create({
             data,
             hora,
@@ -45,7 +49,7 @@ module.exports = {
             upvotes: [],
             downvotes: [],
             estado: 0,
-            criador: request.headers.authorization,
+            criador,
         });
 
         return response.json(incident);

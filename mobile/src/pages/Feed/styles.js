@@ -13,8 +13,10 @@ export default StyleSheet.create({
         paddingTop:10,
     },
     headerLeft:{
-        flexDirection:'row',
         flex:1,
+    },
+    headerRight:{
+        flexDirection:'row',
     },
     welcome: {
         paddingLeft:5,
@@ -38,11 +40,17 @@ export default StyleSheet.create({
         flexDirection: 'row',
         paddingRight:5,
     },
+    addIncidentBtn:{
+        backgroundColor:'#00AA00',
+        borderRadius:60,
+        marginBottom:36,
+        marginRight:35,
+    },
     incidentList:{
         marginTop:20,
         backgroundColor: '#465881',
         borderRadius:15,
-        height:'92%',
+        height:'87.5%',
         width:'98%',
         padding:5,
     },
@@ -70,7 +78,13 @@ export default StyleSheet.create({
         flexDirection:'row',
     },
     incidentDesc:{
-        flexBasis:240,
+        flexBasis:238,
+    },
+    incidentDate:{
+        marginLeft:10,
+    },
+    incidentRegister:{
+        flexDirection:'column',
     },
     upvote:{
         backgroundColor:'#00AA00',

@@ -57,12 +57,19 @@ export default function Feed(){
             <View style={styles.header}>
                 <View style={styles.headerLeft}>
                     <Text style={styles.welcome}>Bem Vindo: </Text>
-                    <Text style={styles.user}>{user}</Text>
+                    <Text style={styles.user}>{user}</Text>   
                 </View>
-                <TouchableOpacity style={styles.logoutBtn} onPress={logout}>
-                    <Text style={styles.logoutText}>Sair</Text>
-                    <Feather name='log-out' size={25} color='#fb5b5a' />
-                </TouchableOpacity>              
+                <View style={styles.headerRight}>
+                    
+                        <TouchableOpacity style={styles.addIncidentBtn}>
+                            <Feather name='plus' size={30} color='#fff' backgroundColor='#00AA00'/>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.logoutBtn} onPress={logout}>
+                            <Text style={styles.logoutText}>Sair</Text>
+                            <Feather name='log-out' size={25} color='#fb5b5a' />
+                        </TouchableOpacity>
+                    
+                </View>         
             </View>
             <View style={styles.incidentList}>
                 <FlatList
