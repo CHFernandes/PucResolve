@@ -22,7 +22,24 @@ export default function Feed(){
     const [user, setUser] = useState("usuário");
     const [update, setUpdate] = useState([]);
 
+    function increment(incident){
+        if(incident.upvotes.includes(header)){
+            incident.pontuacao = incident.pontuacao - 1;
+        }else{
+            incident.pontuacao = incident.pontuacao + 1;
+        }
+    }
+
+    function decrement(incident){
+        if(incident.downvotes.includes(header)){
+            incident.pontuacao = incident.pontuacao + 1;
+        }else{
+            incident.pontuacao = incident.pontuacao - 1;
+        }
+    }
+
     async function upvote(incident){
+        increment(incident);
         const id = incident._id;
 
         if(!header){
@@ -52,6 +69,7 @@ export default function Feed(){
     }
 
     async function downvote(incident){
+        decrement(incident);
         const id = incident._id;
 
         if(!header){
