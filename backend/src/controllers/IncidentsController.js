@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Incidents = mongoose.model('Incidents');
+const Academico = require('../models/Academic');
 
 module.exports = {
     async index(request, response) {

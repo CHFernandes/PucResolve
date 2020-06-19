@@ -1,24 +1,21 @@
-import React, { useState,useEffect } from 'react';
-import { Feather } from '@expo/vector-icons';
+import React, { useState } from 'react';
 import { useNavigation} from '@react-navigation/native';
-import { View, TextInput, ImageBackground, Text, TouchableOpacity, Alert } from 'react-native';
+import { View, TextInput, Text, TouchableOpacity, Alert } from 'react-native';
 
 import api from '../../services/api';
 
 import styles from './styles';
 
-import pucImage from '../../assets/pucpr.jpg';
-
 export default function Login(){
-    const[login, setLogin] = useState([]);
-    const[senha, setSenha] = useState([]);
+    const[login, setLogin] = useState();
+    const[senha, setSenha] = useState();
 
     const navigation = useNavigation();
 
-    function alert(e){
+    function alert(){
         Alert.alert(
             "Erro",
-            String(e),
+            "Usuário ou senha incorretos",
             [{text: "OK",}],
             { cancelable: false}
         );
@@ -34,14 +31,12 @@ export default function Login(){
             navigation.navigate('Feed',{authorization, profile});
             
         }catch(erro){
-            alert(erro);
+            alert();
         }
     }
 
     return(
-        <ImageBackground source={pucImage} style={styles.backgroundImage}>
         <View style={styles.container}>
-            
             <View style={styles.loginBox}>
                 <View style={styles.contentBox}>
                     <Text style={styles.title}>PucResolve</Text>
@@ -67,8 +62,6 @@ export default function Login(){
                     <Text>Logar</Text>
                 </TouchableOpacity>
             </View>
-            
         </View>
-        </ImageBackground>
     );
 }

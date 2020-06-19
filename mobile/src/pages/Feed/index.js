@@ -11,6 +11,7 @@ export default function Feed(){
     const navigation = useNavigation();
     const routes = useRoute();
     const header = routes.params.authorization;
+    const profile = routes.params.profile;
 
     const [incidents, setIncidents] = useState([]);
     const [user, setUser] = useState("usuário");
@@ -33,6 +34,10 @@ export default function Feed(){
             setUpdate(updatedVotes);
             return updatedVotes.data;
         }
+    }
+
+    function addNewIncident(){
+        navigation.navigate('NewIncident',{header, profile});
     }
 
     function dataFormat(data){
@@ -98,7 +103,7 @@ export default function Feed(){
                 </View>
                 <View style={styles.headerRight}>
                     
-                        <TouchableOpacity style={styles.addIncidentBtn}>
+                        <TouchableOpacity style={styles.addIncidentBtn} onPress={addNewIncident}>
                             <Feather name='plus' size={30} color='#fff' backgroundColor='#00AA00'/>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.logoutBtn} onPress={logout}>

@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import Constants from 'expo-constants';
 
 export default StyleSheet.create({
     container: {
@@ -28,7 +27,8 @@ export default StyleSheet.create({
         justifyContent:'flex-start',
         flexDirection: 'row',
         color:'#fff',
-        fontSize: 25,
+        fontSize: 20,
+        paddingLeft:5,
     },
     logoutText:{
         color:'#fb5b5a',
