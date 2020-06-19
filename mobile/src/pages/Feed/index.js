@@ -12,6 +12,11 @@ export default function Feed(){
     const routes = useRoute();
     const header = routes.params.authorization;
     const profile = routes.params.profile;
+    const newIncident = routes.params.newIncident;
+
+    if(newIncident){
+        loadIncidents();
+    }
 
     const [incidents, setIncidents] = useState([]);
     const [user, setUser] = useState("usuário");

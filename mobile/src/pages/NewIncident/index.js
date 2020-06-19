@@ -47,12 +47,10 @@ export default function NewIncident(){
                         'authorization':authorization,
                     }
                 });
-
-                console.log(response);
     
                 alert('Sucesso', 'Ocorrência enviada com sucesso');
     
-                navigation.navigate('Feed',{authorization, profile});
+                navigation.navigate('Feed',{authorization, profile, newIncident:true});
                 
             }catch(erro){
                 alert('Erro', erro);
